@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">timer_bottomnav_dependencyinjection</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="start_timer">Start Countdown</string>
+    <string name="previous">Previous</string>
+
+    <string name="countdown_starter">
+        00:00:05
+    </string>
+    <string name="title_activity_btm_nav_bar">btm_nav_bar</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="hello_home_fragment">hello home fragment</string>
+</resources>
