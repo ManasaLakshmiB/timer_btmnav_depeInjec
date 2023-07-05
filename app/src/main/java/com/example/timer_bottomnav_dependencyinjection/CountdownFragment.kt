@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.timer_bottomnav_dependencyinjection.databinding.FragmentFirstBinding
+import com.example.timer_bottomnav_dependencyinjection.databinding.FragmentCountdownBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -16,7 +16,7 @@ import java.util.Locale
  */
 class CountdownFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentCountdownBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -27,7 +27,7 @@ class CountdownFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = FragmentCountdownBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -67,12 +67,9 @@ class CountdownFragment : Fragment() {
         override fun onFinish() {
 
             startActivity(
-                Intent(this@CountdownFragment.requireContext(),ActivityHome::class.java)
+                Intent(this@CountdownFragment.requireContext(),ActivityHoliday::class.java)
 
             )
-//            var intent = Intent(this@CountdownFragment,btm_nav_bar::class.java)
-//            startActivity(intent)
-           // binding.textviewFirst.text= timeFormat.format(5000)
         }
     }
 }

@@ -1,13 +1,13 @@
-package com.example.timer_bottomnav_dependencyinjection.ui.home
+package com.example.timer_bottomnav_dependencyinjection.ui.holiday
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class WeatherViewModel : ViewModel() {
+class HolidayViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+        value = "This is Holiday Fragment"
     }
     val text: LiveData<String> = _text
 }

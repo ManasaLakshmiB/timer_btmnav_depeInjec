@@ -1,27 +1,26 @@
-package com.example.timer_bottomnav_dependencyinjection.ui.home
+package com.example.timer_bottomnav_dependencyinjection.ui.holiday
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.timer_bottomnav_dependencyinjection.R
+import com.example.timer_bottomnav_dependencyinjection.data.model.Holidays.HolidayItemModel
 import com.example.timer_bottomnav_dependencyinjection.data.model.Holidays.HolidayModel
 import com.example.timer_bottomnav_dependencyinjection.data.remote.ApiDetail
-import com.example.timer_bottomnav_dependencyinjection.databinding.FragmentWeatherBinding
-import com.google.gson.Gson
+import com.example.timer_bottomnav_dependencyinjection.databinding.FragmentHolidayBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.io.File
-import java.io.FileReader
-import kotlin.io.path.Path
-import kotlin.io.path.absolutePathString
 
 
-class WeatherFragment : Fragment() {
+class HolidayFragment : Fragment() {
 
-    lateinit var binding: FragmentWeatherBinding
+    lateinit var binding: FragmentHolidayBinding
     lateinit var recyclerView:RecyclerView
 
     override fun onCreateView(
@@ -29,9 +28,23 @@ class WeatherFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentWeatherBinding.inflate(inflater, container, false)
+        binding = FragmentHolidayBinding.inflate(inflater, container, false)
+
+
         return binding.root
+        loadData()
     }
+
+//        binding.rvholiday.setOnClickListener(
+//            findNavController().navigate(
+//                R.id.action_navigation_home_to_holidaydetailFragment ,
+//
+//
+//
+//            )
+//        )
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,21 +52,18 @@ class WeatherFragment : Fragment() {
         loadData()
     }
 
+
+
+
+
     private fun loadData() {
         CoroutineScope(Dispatchers.Main).launch {
 
             try{
                 val result = ApiDetail.apiclient.getHolidayModel()
+                var adapter = HolidayAdapter(result)
 
-
-
-
-
-
-
-                var adapter = WeatherAdapter(result)
-
-             recyclerView = binding.rvweather
+             recyclerView = binding.rvholiday
              recyclerView.adapter = adapter
             }catch (e:Exception){
                 e.printStackTrace()

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">timer_bottomnav_dependencyinjection</string>
+    <string name="app_name">Timer</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -11,8 +11,10 @@
         00:00:05
     </string>
     <string name="title_activity_btm_nav_bar">btm_nav_bar</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">Holidays List</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="hello_home_fragment">hello home fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
