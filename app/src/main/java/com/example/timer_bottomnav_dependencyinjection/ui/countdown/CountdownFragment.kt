@@ -1,4 +1,4 @@
-package com.example.timer_bottomnav_dependencyinjection
+package com.example.timer_bottomnav_dependencyinjection.ui.countdown
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.timer_bottomnav_dependencyinjection.ui.holiday.ActivityHoliday
 import com.example.timer_bottomnav_dependencyinjection.databinding.FragmentCountdownBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -67,7 +68,7 @@ class CountdownFragment : Fragment() {
         override fun onFinish() {
 
             startActivity(
-                Intent(this@CountdownFragment.requireContext(),ActivityHoliday::class.java)
+                Intent(this@CountdownFragment.requireContext(), ActivityHoliday::class.java)
 
             )
         }

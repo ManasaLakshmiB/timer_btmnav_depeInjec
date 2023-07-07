@@ -1,4 +1,4 @@
-package com.example.timer_bottomnav_dependencyinjection
+package com.example.timer_bottomnav_dependencyinjection.data.repository
 
 import org.junit.Test
 

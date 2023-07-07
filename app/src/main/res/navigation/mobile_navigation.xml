@@ -22,13 +22,9 @@
         tools:layout="@layout/fragment_dashboard" />
     <fragment
         android:id="@+id/holidaydetailFragment"
-        android:name="com.example.timer_bottomnav_dependencyinjection.HolidaydetailFragment"
-        android:label="fragment_holidaydetail"
+        android:name="com.example.timer_bottomnav_dependencyinjection.ui.holiday.HolidaydetailFragment"
+        android:label="Holiday's List Detail"
         tools:layout="@layout/fragment_holidaydetail" />
 
-    <!--    <fragment-->
-<!--        android:id="@+id/navigation_notifications"-->
-<!--        android:name="com.example.timer_bottomnav_dependencyinjection.ui.notifications.NotificationsFragment"-->
-<!--        android:label="@string/title_notifications"-->
-<!--        tools:layout="@layout/fragment_notifications" />-->
+
 </navigation>

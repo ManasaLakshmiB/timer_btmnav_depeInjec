@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-
+        android:background="@drawable/timer_img"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".CountdownFragment"
+        tools:context=".ui.countdown.CountdownFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp">
@@ -16,7 +16,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/countdown_starter"
-        android:textSize="40sp"
+        android:textColor="#F4F2F2"
+        android:textStyle="bold"
+        android:textSize="80sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

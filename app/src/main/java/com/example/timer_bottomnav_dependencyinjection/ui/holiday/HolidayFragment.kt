@@ -4,76 +4,77 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
-import com.example.timer_bottomnav_dependencyinjection.R
-import com.example.timer_bottomnav_dependencyinjection.data.model.Holidays.HolidayItemModel
-import com.example.timer_bottomnav_dependencyinjection.data.model.Holidays.HolidayModel
-import com.example.timer_bottomnav_dependencyinjection.data.remote.ApiDetail
+import com.example.timer_bottomnav_dependencyinjection.data.remote.HolidayCall
+import com.example.timer_bottomnav_dependencyinjection.data.repository.Repository
 import com.example.timer_bottomnav_dependencyinjection.databinding.FragmentHolidayBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class HolidayFragment : Fragment() {
 
     lateinit var binding: FragmentHolidayBinding
-    lateinit var recyclerView:RecyclerView
+    lateinit var recyclerView: RecyclerView
+
+//    @Inject
+//    lateinit var repository: Repository
+
+    val viewmodel by viewModels<HolidayViewModel>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+//to display the data without delay we used viewmodel inside the on create method
+        viewmodel.getHolidayData()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+//val viewmodel :HolidayViewModel by viewModel<>()
+        // val viewmodel :HolidayViewModel by viewModels<HolidayViewModel>()
         // Inflate the layout for this fragment
         binding = FragmentHolidayBinding.inflate(inflater, container, false)
-
-
         return binding.root
-        loadData()
     }
 
-//        binding.rvholiday.setOnClickListener(
-//            findNavController().navigate(
-//                R.id.action_navigation_home_to_holidaydetailFragment ,
-//
-//
-//
-//            )
-//        )
 
-
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?)  {
         super.onViewCreated(view, savedInstanceState)
 
-        loadData()
-    }
+//        loadData()
+        recyclerView = binding.rvholiday
 
-
-
-
-
-    private fun loadData() {
-        CoroutineScope(Dispatchers.Main).launch {
-
-            try{
-                val result = ApiDetail.apiclient.getHolidayModel()
-                var adapter = HolidayAdapter(result)
-
-             recyclerView = binding.rvholiday
-             recyclerView.adapter = adapter
-            }catch (e:Exception){
-                e.printStackTrace()
-            }
-
-
-//            binding.apply {
-////                layoutManager = LinearLayoutManager(context)
-////                adapter = WeatherAdapter(result)
-//            }
+        viewmodel.HolidayliveData.observe(viewLifecycleOwner) {
+            var adapter = HolidayAdapter(it)
+            recyclerView.adapter = adapter
         }
+
     }
+
+
+//    private fun loadData() {
+//        CoroutineScope(Dispatchers.Main).launch {
+//
+//            try {
+//                //  val result = ApiDetail.apiclient.getHolidayModel()
+//                val result = repository.getHolidayModel()
+//
+//            } catch (e: Exception) {
+//                e.printStackTrace()
+//            }
+//
+//
+////            binding.apply {
+//////                layoutManager = LinearLayoutManager(context)
+//////                adapter = WeatherAdapter(result)
+////            }
+//        }
+//    }
 }

@@ -27,5 +27,5 @@ object ApiDetail {
         .build()
 
 
-    val apiclient = retrofitinstance.create(ApiCall::class.java)
+    val apiclient = retrofitinstance.create(HolidayCall::class.java)
 }
